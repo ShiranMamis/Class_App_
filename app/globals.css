@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+@layer components {
+  .custom-radio {
+    @apply appearance-none;
+    @apply h-4 w-4 p-2;
+    @apply border border-gray-300;
+    @apply rounded;
+    @apply checked:bg-dark_text checked:border-transparent;
+    @apply focus:outline-none checked:ring-2;
+    @apply relative;
+  }
+
+  .custom-radio::after {
+    content: "";
+    @apply absolute inset-0 flex items-center justify-center;
+    @apply text-white;
+    @apply opacity-0;
+  }
+
+  .custom-radio:checked::after {
+    @apply opacity-100;
+    content: url("/tick.png");
+  }
+}
+
+@layer utilities {
+  .rtl {
+    direction: rtl;
+  }
+  /* custom scrollbar start */
+  .custom-scrollbar {
+    direction: ltr;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+  .custom-scrollbar .scrollbar-small::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: rgba(237, 240, 247, 1);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(59, 68, 92, 1);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-button:vertical:increment {
+    background-color: rgba(237, 240, 247, 1);
+    background-image: url("../public/polygonDown.png");
+    border-radius: 0 0 12px 12px;
+    background-size: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-button:vertical:decrement {
+    background-color: rgba(237, 240, 247, 1);
+    background-image: url("../public/polygonUp.png");
+    border-radius: 12px 12px 0 0;
+    background-size: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  ::-webkit-scrollbar-button:vertical:start:increment,
+  ::-webkit-scrollbar-button:vertical:end:decrement,
+  ::-webkit-scrollbar-button:horizontal:start:increment,
+  ::-webkit-scrollbar-button:horizontal:end:decrement {
+    display: none;
+  }
+  /* custom scrollbar end */
+}
